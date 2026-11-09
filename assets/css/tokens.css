@@ -1,0 +1,71 @@
+/* Токены krivtsov.one. Любая правка вида сайта начинается отсюда. */
+:root {
+  /* Цвета */
+  --concrete-dark: #2E302D;   /* фон тёмных экранов */
+  --concrete-raise: #3A3C38;  /* поля и плашки на тёмном, чтобы не сливались с фоном */
+  --concrete: #8F928C;        /* бетон: тонкие линии на тёмном */
+  --concrete-light: #D6D7D2;  /* фон светлых секций */
+  --paper: #F3F2EE;           /* текст на тёмном, второй светлый фон */
+  --white: #FFFFFF;           /* поля формы на светлом */
+  --ink: #1E1F1D;             /* текст на светлом */
+  --muted-on-dark: #A6A9A2;   /* второй текст на тёмном, контраст 5:1 */
+  --muted-on-light: #565953;  /* второй текст на светлом, контраст 4.9:1 */
+  --brass: #B3925A;           /* единственный акцент: кнопки, активное */
+  --brass-light: #C7A86F;     /* кнопка при наведении */
+  --brass-deep: #7A6036;      /* акцент текстом на светлом фоне */
+  --error: #F08A78;           /* ошибка в форме, на тёмном контраст 5.5:1 */
+  --header-glass: rgb(46 48 45 / 0.92);  /* --concrete-dark с прозрачностью для шапки при прокрутке */
+  --lamp-glow: rgb(214 160 82 / 0.42);    /* тёплый свет из проёма двери */
+  --backdrop: rgb(30 31 29 / 0.8);       /* затемнение под окнами */
+  --line-on-dark: rgb(243 242 238 / 0.16);
+  --line-on-light: rgb(30 31 29 / 0.18);
+
+  /* Шрифты */
+  --font-display: 'Alumni Sans', 'Arial Narrow', sans-serif;
+  --font-text: 'Golos Text', Arial, sans-serif;
+
+  /* Шкала кеглей: кварта 1.333 от 18px */
+  --step-0: 1.125rem;
+  --step-1: 1.5rem;
+  --step-2: 2rem;
+  --step-3: 2.666rem;
+  --step-4: 3.553rem;
+  --step-5: 4.736rem;
+  --step-6: 6.313rem;
+  --text-small: 0.9375rem;
+  --hero-h1: clamp(2.5rem, 5.4vw, var(--step-6));
+  --h1: clamp(2.25rem, 4.6vw, var(--step-5));
+  --h2: clamp(var(--step-3), 4vw, var(--step-5));
+  --h3: clamp(var(--step-1), 2.2vw, var(--step-2));
+  --lead-size: clamp(var(--step-0), 1.45vw, 1.3125rem);
+  --button-size: clamp(1.25rem, 1.7vw, var(--step-1));
+
+  --leading-tight: 0.95;
+  --leading-heading: 1.05;
+  --leading-text: 1.55;
+  --tracking-caps: 0.04em;
+  --tracking-nav: 0.08em;
+
+  /* Отступы */
+  --space-section: clamp(4.5rem, 8vw, 7.5rem); /* одинаковый между всеми секциями */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+  --page: 1360px;
+  --measure: 38rem;
+  --header-h: 84px;
+
+  /* Форма */
+  --radius: 4px;
+  --tap: 44px;
+  --button-h: 60px;
+
+  /* Движение */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur: 420ms;
+  --dur-slow: 1800ms;
+}
