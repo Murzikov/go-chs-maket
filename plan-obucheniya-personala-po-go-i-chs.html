@@ -17,10 +17,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2E302D">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
 <link rel="preload" href="assets/fonts/AlumniSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/GolosText-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css?v=07fa92fe">
-<link rel="stylesheet" href="assets/css/site.css?v=2eb28c59">
+<link rel="stylesheet" href="assets/css/site.css?v=b5542ff0">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Сергей Кривцов – ГО и ЧС для организаций", "url": "https://krivtsov.one/", "telephone": "+7 925 105-03-13", "email": "info@krivtsov.one", "areaServed": ["Москва", "Московская область"], "founder": {"@type": "Person", "name": "Сергей Николаевич Кривцов"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://krivtsov.one/"}, {"@type": "ListItem", "position": 2, "name": "Услуги и цены", "item": "https://krivtsov.one/uslugi/"}, {"@type": "ListItem", "position": 3, "name": "План обучения сотрудников по ГО и ЧС"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "План обучения сотрудников по ГО и ЧС", "description": "Разрабатываем план обучения персонала по ГО и ЧС с учетом состава обучаемых, сроков подготовки, подтверждающих документов и обязанностей ответственных лиц. Услуга ну...", "areaServed": ["Москва", "Московская область"], "provider": {"@type": "Person", "name": "Сергей Николаевич Кривцов"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Нужно ли обучать всех сотрудников по одной программе?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Состав обучаемых и глубина подготовки зависят от ролей сотрудников, структуры организации и применимых требований."}}, {"@type": "Question", "name": "План обучения является отдельным документом или частью общего комплекта?", "acceptedAnswer": {"@type": "Answer", "text": "План обучения должен быть связан с приказами, ответственными лицами и системой фиксации результатов. Отдельно от общего комплекта он не решает задачу."}}, {"@type": "Question", "name": "Можно ли сначала разработать документы, а обучение провести позже?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Часто сначала формируют документальную основу и распределение обязанностей, а затем переходят к реализации обучения."}}]}</script>
 <meta name="robots" content="noindex, nofollow">
 </head>
@@ -79,6 +81,9 @@
       <p class="lead">Оставьте номер. Перезвоню, уточню пару деталей и назову цену.</p>
     </div>
     <form class="form lead-form__panel" action="#" method="post" novalidate>
+      <input class="form__trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="check" value="">
+      <input type="hidden" name="page" value="">
       <label class="field">
         <span class="field__label">Как к вам обращаться</span>
         <input type="text" name="name" autocomplete="name" required>
@@ -94,6 +99,7 @@
         <span>Согласен на обработку персональных данных по <a href="privacy-policy.html">политике конфиденциальности</a></span>
       </label>
       <button class="button button--main form__submit" type="submit">Перезвоните мне</button>
+      <p class="form__fail" role="alert">Не отправилось. Позвоните <a href="tel:+79251050313">+7 925 105-03-13</a> или напишите в <a href="https://t.me/+79251050313">Telegram</a>.</p>
       <div class="form__done" tabindex="-1" role="status">
         <p class="h3">Заявка отправлена</p>
         <p class="muted">Перезвоню. Если горит, звоните сразу: <a href="tel:+79251050313">+7 925 105-03-13</a>.</p>
@@ -161,6 +167,10 @@
     </div>
   </div>
 </footer>
+<div class="cookie" role="region" aria-label="Cookie" hidden>
+  <p>На сайте работают cookie и Яндекс Метрика. <a href="privacy-policy.html">Подробнее</a></p>
+  <button class="button cookie__ok" type="button">Понятно</button>
+</div>
 <nav class="callbar" aria-label="Быстрая связь">
   <a href="tel:+79251050313">Позвонить</a>
   <a href="https://t.me/+79251050313">Telegram</a>
@@ -177,6 +187,6 @@
   <button class="dialog__close" type="button" aria-label="Закрыть">×</button>
   <img alt="">
 </dialog>
-<script src="assets/js/site.js?v=9ac422ae" defer></script>
+<script src="assets/js/site.js?v=84c40153" defer></script>
 </body>
 </html>

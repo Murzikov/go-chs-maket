@@ -50,11 +50,45 @@ if (form) {
       firstError[0].focus();
       return;
     }
-    // Отправка подключается при переносе на WordPress (Contact Form 7 или свой обработчик).
-    form.classList.add('is-sent');
-    form.querySelector('.form__done').focus();
+    const done = () => {
+      form.classList.add('is-sent');
+      form.querySelector('.form__done').focus();
+      goal('lead');
+    };
+    // В макете адреса отправки нет (action="#"), там форма только показывает, как будет выглядеть ответ
+    if (form.getAttribute('action') === '#') return done();
+    const button = form.querySelector('.form__submit');
+    button.disabled = true;
+    form.classList.remove('is-failed');
+    form.elements.page.value = location.href;
+    fetch(form.action, { method: 'POST', body: new FormData(form) })
+      .then((response) => response.ok ? done() : Promise.reject())
+      .catch(() => form.classList.add('is-failed'))
+      .finally(() => { button.disabled = false; });
+  });
+  // Боты не печатают и не кликают: проверочное поле заполняется только от живого ввода
+  form.addEventListener('input', () => { form.elements.check.value = 'human'; }, { once: true });
+}
+
+// Уведомление о cookie: показывается, пока посетитель не нажал «Понятно»
+const cookie = document.querySelector('.cookie');
+if (cookie && !localStorage.getItem('cookie-ok')) {
+  cookie.hidden = false;
+  cookie.querySelector('.cookie__ok').addEventListener('click', () => {
+    localStorage.setItem('cookie-ok', '1');
+    cookie.hidden = true;
   });
 }
+
+// Цели Метрики: заявка, звонок, Telegram, WeChat. На макете счётчика нет, вызов просто пропускается.
+function goal(name) {
+  if (window.ym) window.ym(108378010, 'reachGoal', name);
+}
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="tel:"], a[href*="t.me/"], [data-dialog="wechat"]');
+  if (!link) return;
+  goal(link.matches('[href^="tel:"]') ? 'call' : link.matches('[href*="t.me/"]') ? 'telegram' : 'wechat');
+});
 
 // Окна: QR-код WeChat и дипломы крупно. Закрываются крестиком, Esc и кликом мимо.
 document.querySelectorAll('[data-dialog]').forEach((button) =>
