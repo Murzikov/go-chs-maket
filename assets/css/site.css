@@ -324,7 +324,9 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 .related { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-l); }
 
 /* Форма заявки */
-.lead-form__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); }
+.lead-form__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-xl); align-items: center; }
+.lead-form__panel { padding: var(--space-l); border-radius: var(--radius); background: var(--concrete-raise); }
+.lead-form__panel .field input { background: var(--concrete-dark); }
 .lead-form__intro { display: grid; gap: var(--space-l); align-content: start; }
 .contacts-list { list-style: none; display: grid; gap: var(--space-s); }
 .contacts-list a { font-size: var(--step-1); text-decoration: none; }
@@ -351,7 +353,7 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 .consent a { color: var(--paper); text-underline-offset: 3px; }
 .consent.is-invalid { color: var(--error); }
 .form__submit { justify-self: start; }
-.form__done { display: none; gap: var(--space-m); padding: var(--space-l); border-radius: var(--radius); background: var(--concrete-raise); }
+.form__done { display: none; gap: var(--space-m); }
 .form.is-sent > :not(.form__done) { display: none; }
 .form.is-sent .form__done { display: grid; }
 
@@ -376,7 +378,9 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 
 /* Подвал */
 .footer { background: var(--ink); color: var(--paper); padding: var(--space-xl) 0 var(--space-l); }
-.footer__grid { display: grid; grid-template-columns: minmax(0, 4fr) repeat(3, minmax(0, 2.6fr)); gap: var(--space-l); }
+.footer__grid { display: grid; grid-template-columns: minmax(0, 3fr) repeat(4, minmax(0, 2fr)); gap: var(--space-l); }
+.footer__about { max-width: 16rem; color: var(--muted-on-dark); font-size: var(--text-small); }
+.footer__contacts a, .footer__contacts .text-button { font-weight: 500; }
 .footer__logo { display: block; width: 150px; margin-bottom: var(--space-m); }
 .footer h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.375rem; letter-spacing: var(--tracking-nav); text-transform: uppercase; margin-bottom: var(--space-m); }
 .footer ul { list-style: none; display: grid; gap: var(--space-xs); }
