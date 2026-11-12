@@ -179,6 +179,39 @@ button, input, textarea { font: inherit; color: inherit; }
 .crumbs a { text-decoration: none; }
 .crumbs a:hover { color: var(--brass); }
 
+/* Иконки: линия цвета текста и одна латунная деталь */
+.icon { display: block; width: 48px; height: 48px; flex: none; }
+.icon .accent { fill: var(--brass); }
+.icon .accent-line { stroke: var(--brass); }
+
+/* Большая иконка в шапке страницы услуги */
+.page-head__mark { justify-self: end; align-self: center; }
+.page-head__mark .icon { width: clamp(120px, 15vw, 220px); height: auto; stroke-width: 1.4; color: var(--muted-on-dark); }
+
+/* Задачи на главной: проблема словами клиента, что делаю, цена */
+.tasks { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-m); }
+.task {
+  display: grid; grid-template-rows: auto auto 1fr auto; gap: var(--space-s); height: 100%;
+  padding: var(--space-l); border-radius: var(--radius); background: var(--paper); text-decoration: none;
+  outline: 1px solid transparent; transition: outline-color var(--dur-fast) var(--ease-soft), transform var(--dur-fast) var(--ease-soft);
+}
+.task .icon { width: 64px; height: 64px; }
+.task p { color: var(--muted-on-light); }
+.task__foot { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-s); padding-top: var(--space-s); border-top: 1px solid var(--line-on-light); }
+.task__foot b { font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1; }
+.task__foot span { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--brass-deep); }
+.task:hover { outline-color: var(--brass-deep); transform: translateY(-2px); }
+.task:hover .h3 { color: var(--brass-deep); }
+
+/* Кейсы на фоне тоннеля */
+.section--tunnel { position: relative; overflow: hidden; }
+.section--tunnel > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.22; }
+.section--tunnel > .wrap { position: relative; }
+.case-slots { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-m); }
+.case-slot { display: grid; gap: var(--space-s); align-content: start; padding: var(--space-l); border: 1px dashed var(--concrete); border-radius: var(--radius); background: var(--header-glass); }
+.case-slot p { color: var(--muted-on-dark); }
+.case-slot b { color: var(--paper); font-weight: 600; }
+
 /* Цена строкой под кнопками на страницах услуг */
 .page-head__price { flex-basis: 100%; color: var(--muted-on-dark); font-size: var(--text-small); }
 .page-head__price b { color: var(--paper); font-weight: 600; }
@@ -223,6 +256,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .cases__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl) var(--space-l); list-style: none; }
 .case { display: grid; align-content: start; gap: var(--space-s); height: 100%; padding-top: var(--space-m); border-top: 1px solid var(--line-on-light); text-decoration: none; transition: border-color var(--dur-fast) var(--ease-soft); }
 .case p { color: var(--muted-on-light); max-width: 30rem; }
+.case .icon { width: 44px; height: 44px; }
 .case__more { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--brass-deep); }
 .case:hover { border-top-color: var(--brass-deep); }
 .case:hover .h3 { color: var(--brass-deep); }
@@ -231,15 +265,16 @@ button, input, textarea { font: inherit; color: inherit; }
 .services { list-style: none; border-top: 1px solid var(--line-on-light); }
 .tone-dark .services { border-top-color: var(--line-on-dark); }
 .service-row {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(9rem, auto); gap: var(--space-xs) var(--space-l); align-items: baseline;
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(9rem, auto); gap: var(--space-xs) var(--space-m); align-items: baseline;
   padding: var(--space-m) 0; border-bottom: 1px solid var(--line-on-light); text-decoration: none;
   transition: background-color var(--dur-fast) var(--ease-soft);
 }
 .tone-dark .service-row { border-bottom-color: var(--line-on-dark); }
 .service-row__name { font-size: var(--step-1); line-height: 1.25; transition: color var(--dur-fast) var(--ease-soft); }
-.service-row__short { grid-column: 1; color: var(--muted-on-light); font-size: var(--text-small); max-width: 40rem; }
+.service-row .icon { grid-row: 1 / span 2; align-self: start; width: 40px; height: 40px; }
+.service-row__short { grid-column: 2; color: var(--muted-on-light); font-size: var(--text-small); max-width: 40rem; }
 .tone-dark .service-row__short { color: var(--muted-on-dark); }
-.service-row__price { grid-column: 2; grid-row: 1; text-align: right; font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1; white-space: nowrap; }
+.service-row__price { grid-column: 3; grid-row: 1; text-align: right; font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1; white-space: nowrap; }
 a.service-row:hover .service-row__name { color: var(--brass-deep); }
 .tone-dark a.service-row:hover .service-row__name { color: var(--brass); }
 .catalog { display: grid; gap: var(--space-section); }
@@ -314,8 +349,8 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 .contacts-list a { font-size: var(--step-1); text-decoration: none; }
 .contacts-list a:hover { color: var(--brass); }
 .contacts-list span { display: block; font-size: var(--text-small); color: var(--muted-on-dark); }
-.form { display: grid; gap: var(--space-m); }
-.form__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-m); }
+.form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-m); align-content: start; }
+.form .consent, .form__submit, .form__done { grid-column: 1 / -1; }
 .field { display: grid; gap: var(--space-xs); }
 .field__label { font-size: var(--text-small); color: var(--muted-on-dark); }
 .field input[type="text"], .field input[type="tel"], .field textarea {
@@ -330,26 +365,6 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 .field.is-invalid input { border-color: var(--error); }
 .field__error { display: none; font-size: var(--text-small); color: var(--error); }
 .field.is-invalid .field__error { display: block; }
-.chips { display: flex; flex-wrap: wrap; gap: var(--space-xs); border: 0; margin: 0; padding: 0; }
-.chips legend { margin-bottom: var(--space-xs); font-size: var(--text-small); color: var(--muted-on-dark); }
-.chip input { position: absolute; opacity: 0; pointer-events: none; }
-.chip span {
-  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 var(--space-m);
-  border: 1px solid var(--line-on-dark); border-radius: var(--radius); cursor: pointer; background: var(--concrete-raise);
-  transition: border-color var(--dur-fast) var(--ease-soft), background-color var(--dur-fast) var(--ease-soft), color var(--dur-fast);
-}
-.chip span:hover { border-color: var(--concrete); }
-.chip input:checked + span { border-color: var(--brass); background: var(--brass); color: var(--ink); }
-.chip input:focus-visible + span { outline: 2px solid var(--brass); outline-offset: 3px; }
-.file { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-s); }
-.file input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.file label {
-  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 var(--space-m); cursor: pointer;
-  border: 1px dashed var(--concrete); border-radius: var(--radius);
-  transition: border-color var(--dur-fast) var(--ease-soft), color var(--dur-fast);
-}
-.file label:hover, .file input:focus-visible + label { border-color: var(--brass); color: var(--brass); }
-.file__names { font-size: var(--text-small); color: var(--muted-on-dark); }
 .consent { display: flex; gap: var(--space-s); align-items: flex-start; font-size: var(--text-small); color: var(--muted-on-dark); cursor: pointer; }
 .consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--brass); flex: none; }
 .consent a { color: var(--paper); text-underline-offset: 3px; }
@@ -397,6 +412,7 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
   .header__menu { display: block; }
   .header__actions { margin-left: auto; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tasks, .case-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
@@ -413,15 +429,15 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 
   .page-head { padding-top: var(--space-l); }
   .page-head__grid, .cases__grid, .catalog__group, .person, .feature, .split, .lead-form__grid, .faq-group, .article { grid-template-columns: minmax(0, 1fr); gap: var(--space-l); }
-  .cases__list, .related, .posts, .diplomas, .law { grid-template-columns: minmax(0, 1fr); gap: var(--space-l); }
+  .cases__list, .related, .posts, .diplomas, .law, .tasks, .case-slots, .form { grid-template-columns: minmax(0, 1fr); gap: var(--space-l); }
+  .page-head__mark { display: none; }
   .section__head--row { grid-template-columns: minmax(0, 1fr); }
-  .service-row { grid-template-columns: minmax(0, 1fr); }
-  .service-row__price { grid-column: 1; grid-row: auto; text-align: left; white-space: normal; }
+  .service-row { grid-template-columns: 40px minmax(0, 1fr); }
+  .service-row__price { grid-column: 2; grid-row: auto; text-align: left; white-space: normal; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .person__photo { aspect-ratio: 16 / 10; }
   .doc-list { columns: 1; }
-  .form__row { grid-template-columns: minmax(0, 1fr); }
-  .buttons .button, .form__submit { flex: 1 1 100%; justify-self: stretch; }
+    .buttons .button, .form__submit { flex: 1 1 100%; justify-self: stretch; }
   .article__aside { position: static; }
   .footer__grid { grid-template-columns: minmax(0, 1fr); }
   .footer { padding-bottom: calc(var(--space-l) + 72px); }

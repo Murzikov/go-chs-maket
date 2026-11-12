@@ -30,8 +30,6 @@ if (form) {
   const phone = form.querySelector('[name="phone"]');
   const name = form.querySelector('[name="name"]');
   const consent = form.querySelector('[name="consent"]');
-  const files = form.querySelector('[name="files"]');
-  const fileNames = form.querySelector('.file__names');
 
   const setInvalid = (input, invalid) => {
     (input.closest('.field') || input.closest('.consent')).classList.toggle('is-invalid', invalid);
@@ -42,11 +40,6 @@ if (form) {
   phone.addEventListener('input', () => phoneDigits().length >= 10 && setInvalid(phone, false));
   name.addEventListener('input', () => name.value.trim() && setInvalid(name, false));
   consent.addEventListener('change', () => consent.checked && setInvalid(consent, false));
-
-  files.addEventListener('change', () => {
-    const list = [...files.files].map((file) => file.name);
-    fileNames.textContent = list.length ? list.join(', ') : 'PDF, Word или фото, до 20 МБ';
-  });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
