@@ -133,13 +133,9 @@ button, input, textarea { font: inherit; color: inherit; }
 
 /* Первый экран главной */
 .hero { position: relative; min-height: 100svh; overflow: hidden; background: var(--concrete-dark); color: var(--paper); }
-.hero__door { position: absolute; inset: 0 0 0 30%; }
-.hero__door img {
-  width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%;
-  -webkit-mask-image: radial-gradient(ellipse 60% 64% at 54% 48%, #000 46%, transparent 100%);
-          mask-image: radial-gradient(ellipse 60% 64% at 54% 48%, #000 46%, transparent 100%);
-}
-.hero__door::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--concrete-dark) 0, transparent 46%); }
+.hero__door { position: absolute; inset: 0; }
+.hero__door img { width: 100%; height: 100%; object-fit: cover; object-position: 75% 50%; }
+.hero__door::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--concrete-dark) 0, var(--hero-shade) 30%, transparent 60%); }
 .hero__inner {
   position: relative; z-index: 2; min-height: 100svh; max-width: var(--page); margin: 0 auto;
   display: grid; grid-template-rows: auto 1fr auto; gap: var(--space-m);
@@ -152,19 +148,6 @@ button, input, textarea { font: inherit; color: inherit; }
 .hero__mark { grid-row: 3; justify-self: end; width: min(82vw, 1160px, max(420px, calc((100svh - 560px) * 4.7))); color: var(--paper); }
 /* третье ограничение: на низких экранах ноутбуков надпись ужимается, чтобы целиком влезть в первый экран */
 
-/* Свет из проёма: единственный якорный эффект, лампа зажигается один раз */
-.door__light {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 22% 30% at 52% 62%, var(--lamp-glow), transparent 70%);
-  mix-blend-mode: screen;
-  animation: lamp var(--dur-slow) var(--ease-soft) 300ms both;
-}
-@keyframes lamp {
-  0% { opacity: 0; }
-  18% { opacity: 0.7; }
-  24% { opacity: 0.15; }
-  40%, 100% { opacity: 1; }
-}
 
 
 /* Шапка внутренних страниц */
@@ -179,14 +162,8 @@ button, input, textarea { font: inherit; color: inherit; }
 .crumbs a { text-decoration: none; }
 .crumbs a:hover { color: var(--brass); }
 
-/* Иконки: линия цвета текста и одна латунная деталь */
-.icon { display: block; width: 48px; height: 48px; flex: none; }
-.icon .accent { fill: var(--brass); }
-.icon .accent-line { stroke: var(--brass); }
-
 /* Большая иконка в шапке страницы услуги */
 .page-head__mark { justify-self: end; align-self: center; }
-.page-head__mark .icon { width: clamp(120px, 15vw, 220px); height: auto; stroke-width: 1.4; color: var(--muted-on-dark); }
 
 /* Задачи на главной: проблема словами клиента, что делаю, цена */
 .tasks { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-m); }
@@ -195,7 +172,6 @@ button, input, textarea { font: inherit; color: inherit; }
   padding: var(--space-l); border-radius: var(--radius); background: var(--paper); text-decoration: none;
   outline: 1px solid transparent; transition: outline-color var(--dur-fast) var(--ease-soft), transform var(--dur-fast) var(--ease-soft);
 }
-.task .icon { width: 64px; height: 64px; }
 .task p { color: var(--muted-on-light); }
 .task__foot { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-s); padding-top: var(--space-s); border-top: 1px solid var(--line-on-light); }
 .task__foot b { font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1; }
@@ -211,6 +187,13 @@ button, input, textarea { font: inherit; color: inherit; }
 .case-slot { display: grid; gap: var(--space-s); align-content: start; padding: var(--space-l); border: 1px dashed var(--concrete); border-radius: var(--radius); background: var(--header-glass); }
 .case-slot p { color: var(--muted-on-dark); }
 .case-slot b { color: var(--paper); font-weight: 600; }
+
+/* Предметы-иконки из Gemini: белый фон снимка растворяется на светлой карточке */
+.item { display: block; width: 96px; height: 96px; object-fit: contain; mix-blend-mode: multiply; }
+.task .item { width: 120px; height: 120px; margin: calc(var(--space-s) * -1) 0 0 calc(var(--space-s) * -1); }
+.service-row .item { grid-row: 1 / span 2; align-self: start; width: 56px; height: 56px; margin-top: -6px; }
+.case .item { width: 88px; height: 88px; }
+.page-head__mark .item { width: clamp(200px, 22vw, 300px); height: auto; border-radius: var(--radius); background: var(--white); mix-blend-mode: normal; }
 
 /* Цена строкой под кнопками на страницах услуг */
 .page-head__price { flex-basis: 100%; color: var(--muted-on-dark); font-size: var(--text-small); }
@@ -256,7 +239,6 @@ button, input, textarea { font: inherit; color: inherit; }
 .cases__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl) var(--space-l); list-style: none; }
 .case { display: grid; align-content: start; gap: var(--space-s); height: 100%; padding-top: var(--space-m); border-top: 1px solid var(--line-on-light); text-decoration: none; transition: border-color var(--dur-fast) var(--ease-soft); }
 .case p { color: var(--muted-on-light); max-width: 30rem; }
-.case .icon { width: 44px; height: 44px; }
 .case__more { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--brass-deep); }
 .case:hover { border-top-color: var(--brass-deep); }
 .case:hover .h3 { color: var(--brass-deep); }
@@ -265,13 +247,12 @@ button, input, textarea { font: inherit; color: inherit; }
 .services { list-style: none; border-top: 1px solid var(--line-on-light); }
 .tone-dark .services { border-top-color: var(--line-on-dark); }
 .service-row {
-  display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(9rem, auto); gap: var(--space-xs) var(--space-m); align-items: baseline;
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(9rem, auto); gap: var(--space-xs) var(--space-m); align-items: baseline;
   padding: var(--space-m) 0; border-bottom: 1px solid var(--line-on-light); text-decoration: none;
   transition: background-color var(--dur-fast) var(--ease-soft);
 }
 .tone-dark .service-row { border-bottom-color: var(--line-on-dark); }
 .service-row__name { font-size: var(--step-1); line-height: 1.25; transition: color var(--dur-fast) var(--ease-soft); }
-.service-row .icon { grid-row: 1 / span 2; align-self: start; width: 40px; height: 40px; }
 .service-row__short { grid-column: 2; color: var(--muted-on-light); font-size: var(--text-small); max-width: 40rem; }
 .tone-dark .service-row__short { color: var(--muted-on-dark); }
 .service-row__price { grid-column: 3; grid-row: 1; text-align: right; font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1; white-space: nowrap; }
@@ -422,7 +403,7 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
 
   .hero { min-height: auto; }
   .hero__door { position: relative; inset: auto; height: 40svh; }
-  .hero__door img { -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent); mask-image: linear-gradient(to bottom, #000 58%, transparent); }
+  .hero__door img { object-position: 50% 50%; -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent); mask-image: linear-gradient(to bottom, #000 62%, transparent); }
   .hero__door::after { display: none; }
   .hero__inner { min-height: 0; padding-top: 0; margin-top: calc(var(--space-xl) * -1); }
   .hero__mark { justify-self: stretch; width: auto; grid-row: auto; margin-top: var(--space-s); }
@@ -432,7 +413,7 @@ a.service-row:hover .service-row__name { color: var(--brass-deep); }
   .cases__list, .related, .posts, .diplomas, .law, .tasks, .case-slots, .form { grid-template-columns: minmax(0, 1fr); gap: var(--space-l); }
   .page-head__mark { display: none; }
   .section__head--row { grid-template-columns: minmax(0, 1fr); }
-  .service-row { grid-template-columns: 40px minmax(0, 1fr); }
+  .service-row { grid-template-columns: 56px minmax(0, 1fr); }
   .service-row__price { grid-column: 2; grid-row: auto; text-align: left; white-space: normal; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .person__photo { aspect-ratio: 16 / 10; }
